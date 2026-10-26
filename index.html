@@ -1,1 +1,615 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مناحل المحمدي | عسل طبيعي ومنتجات المنحل</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amberGold: '#F59E0B',
+                        honeyDark: '#B45309',
+                        honeyLight: '#FEF3C7',
+                        honeyAccent: '#D97706',
+                        natureGreen: '#059669',
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #FFFDF7;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FEF3C7;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-amberGold selection:text-white">
 
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Brand Name -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-amber-500/30">
+                        🍯
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-black text-amber-900 tracking-tight">مناحل المحمدي</h1>
+                        <p class="text-xs text-amber-700 font-semibold hidden sm:block">من مناحلنا لبيتك مباشرة - جودة نعتز بها</p>
+                    </div>
+                </div>
+
+                <!-- Search Bar (Desktop) -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <input type="text" id="searchInput" oninput="filterProducts()" placeholder="ابحث عن عسل، مكسرات، عروض..." class="w-full pl-10 pr-4 py-2 rounded-full border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm bg-amber-50/50">
+                        <i class="fas fa-search absolute left-3 top-3 text-amber-500"></i>
+                    </div>
+                </div>
+
+                <!-- Contact & Cart Actions -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <a href="tel:01118877988" class="hidden lg:flex items-center gap-2 text-amber-800 hover:text-amber-600 font-bold text-sm bg-amber-50 px-3 py-2 rounded-xl border border-amber-200">
+                        <i class="fas fa-phone-alt text-amber-600"></i>
+                        <span>01118877988</span>
+                    </a>
+                    <button onclick="toggleCartModal()" class="relative bg-gradient-to-r from-amber-500 to-honeyAccent text-white px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-md hover:shadow-lg transition hover:scale-105 active:scale-95">
+                        <i class="fas fa-shopping-basket text-lg"></i>
+                        <span class="hidden sm:inline">السلة</span>
+                        <span id="cartBadge" class="bg-red-600 text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="pb-3 md:hidden">
+                <div class="relative w-full">
+                    <input type="text" id="mobileSearchInput" oninput="syncAndFilter(this.value)" placeholder="ابحث عن عسل، مكسرات، عروض..." class="w-full pl-10 pr-4 py-2 rounded-full border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm bg-amber-50/50">
+                    <i class="fas fa-search absolute left-3 top-3 text-amber-500"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-amber-100/70 via-amber-50/40 to-transparent py-12 lg:py-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="inline-flex items-center gap-2 bg-amber-200/80 text-amber-900 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold mb-4 shadow-sm border border-amber-300">
+                <i class="fas fa-certificate text-amber-600"></i> منتجات طبيعية 100% بدون أي إضافات
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black text-amber-950 mb-4 leading-tight">
+                أجود أنواع العسل الطبيعي والمكملات <br class="hidden sm:block"> <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-honeyDark">من مناحلنا إليك مباشرة</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-gray-700 text-base sm:text-lg mb-8 leading-relaxed font-semibold">
+                نضمن لك نقاء العسل وجودة المكونات. خلطات تجميلية وعلاجية ومكملات غذائية بأعلى معايير النظافة والاتقان.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#productsSection" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-amber-600/30 transition hover:-translate-y-0.5">
+                    تصفح المنتجات الآن <i class="fas fa-arrow-down mr-2"></i>
+                </a>
+                <a href="https://wa.me/201118877988" target="_blank" class="bg-natureGreen hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg shadow-emerald-600/30 transition hover:-translate-y-0.5 flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i> تواصل سريع بالواتساب
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Nav -->
+    <section id="productsSection" class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center space-x-2 space-x-reverse overflow-x-auto pb-4 custom-scrollbar">
+            <button onclick="selectCategory('all')" id="cat-all" class="cat-btn bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition shadow-sm">
+                الكل ✨
+            </button>
+            <button onclick="selectCategory('honey')" id="cat-honey" class="cat-btn bg-white hover:bg-amber-50 border border-amber-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition">
+                عسل النحل الطبيعي 🍯
+            </button>
+            <button onclick="selectCategory('palestine')" id="cat-palestine" class="cat-btn bg-white hover:bg-amber-50 border border-amber-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition">
+                المختوم الفلسطيني 🇵🇸
+            </button>
+            <button onclick="selectCategory('supplements')" id="cat-supplements" class="cat-btn bg-white hover:bg-amber-50 border border-amber-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition">
+                المكملات والخلطات 🚀
+            </button>
+            <button onclick="selectCategory('remedy')" id="cat-remedy" class="cat-btn bg-white hover:bg-amber-50 border border-amber-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition">
+                خلطات علاجية خاصة 🧪
+            </button>
+            <button onclick="selectCategory('wholesale')" id="cat-wholesale" class="cat-btn bg-white hover:bg-amber-50 border border-amber-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition">
+                عروض الجملة 📦
+            </button>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Products rendered dynamically by JS -->
+        </div>
+    </section>
+
+    <!-- Info / Guarantee Banner -->
+    <section class="bg-amber-900 text-amber-50 py-12 mb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-4 rounded-2xl bg-amber-800/50">
+                <i class="fas fa-truck-fast text-4xl text-amber-400 mb-3"></i>
+                <h3 class="font-bold text-lg mb-1">توصيل سريع وآمن</h3>
+                <p class="text-sm text-amber-200">نوصل طلبك بعناية حتى باب بيتك</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-amber-800/50">
+                <i class="fas fa-shield-halved text-4xl text-amber-400 mb-3"></i>
+                <h3 class="font-bold text-lg mb-1">ضمان الجودة والنقاء</h3>
+                <p class="text-sm text-amber-200">عسل بلدي طبيعي ومجرب 100%</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-amber-800/50">
+                <i class="fas fa-headset text-4xl text-amber-400 mb-3"></i>
+                <h3 class="font-bold text-lg mb-1">خدمة واستفسار مباشر</h3>
+                <p class="text-sm text-amber-200">إشراف كابتن محمد أشرف جاهز للرد فوراً</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Details -->
+    <footer class="bg-amber-950 text-white pt-12 pb-24 lg:pb-12 border-t border-amber-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center space-x-3 space-x-reverse mb-4">
+                    <span class="text-3xl">🍯</span>
+                    <h2 class="text-2xl font-black text-amber-400">مناحل المحمدي</h2>
+                </div>
+                <p class="text-amber-200/80 text-sm leading-relaxed mb-4">
+                    من مناحلنا لبيتك مباشرة - جودة نعتز بها. أفضل أنواع العسل البلدي والخلطات المضمونة.
+                </p>
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/201118877988" target="_blank" class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white hover:bg-emerald-700 transition">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://t.me/mohamedashraf2345" target="_blank" class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white hover:bg-sky-700 transition">
+                        <i class="fab fa-telegram text-xl"></i>
+                    </a>
+                    <a href="tel:01118877988" class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center text-white hover:bg-amber-700 transition">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold text-amber-400 mb-4 border-b border-amber-800 pb-2">بيانات التواصل والإدارة</h3>
+                <ul class="space-y-3 text-sm text-amber-100">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-user text-amber-500 w-5"></i>
+                        <span>المسؤول: <strong>محمد أشرف</strong></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone-alt text-amber-500 w-5"></i>
+                        <span>الهاتف / الواتساب: <a href="tel:01118877988" class="hover:underline font-bold dir-ltr">01118877988</a></span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fab fa-telegram-plane text-amber-500 w-5"></i>
+                        <span>التليجرام: <a href="https://t.me/mohamedashraf2345" target="_blank" class="hover:underline font-bold">@mohamedashraf2345</a></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold text-amber-400 mb-4 border-b border-amber-800 pb-2">طريقة الطلب والتوصيل</h3>
+                <p class="text-sm text-amber-200/80 leading-relaxed mb-4">
+                    اختر المنتجات وضعها في السلة، ثم اضغط "إتمام الطلب عبر الواتساب". سيتم إرسال فاتورة تفصيلية بمشترياتك مباشرة إلى الإدارة لتأكيد الشحن والتوصيل بسرعة.
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-amber-900/60 pt-6 text-center text-xs text-amber-400/60">
+            جميع الحقوق محفوظة © مناحل المحمدي 2026
+        </div>
+    </footer>
+
+    <!-- Cart Drawer / Modal -->
+    <div id="cartModal" class="fixed inset-0 z-50 hidden">
+        <!-- Overlay -->
+        <div onclick="toggleCartModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Content Side Panel -->
+        <div class="absolute inset-y-0 left-0 max-w-full flex pl-0 sm:pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                <!-- Header -->
+                <div class="p-4 bg-amber-600 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-shopping-basket text-xl"></i>
+                        <h3 class="font-bold text-lg">سلة التبضع</h3>
+                    </div>
+                    <button onclick="toggleCartModal()" class="text-white hover:text-amber-200 text-2xl font-bold">
+                        &times;
+                    </button>
+                </div>
+
+                <!-- Items List -->
+                <div id="cartItemsContainer" class="p-4 flex-1 overflow-y-auto custom-scrollbar divide-y divide-amber-100">
+                    <!-- Items inserted via JS -->
+                </div>
+
+                <!-- Footer / Checkout Step -->
+                <div class="p-4 bg-amber-50 border-t border-amber-200">
+                    <div class="flex justify-between items-center mb-4 text-base font-bold text-gray-800">
+                        <span>المجموع الإجمالي:</span>
+                        <span id="cartTotal" class="text-xl text-amber-700">0 ج.م</span>
+                    </div>
+
+                    <button onclick="openCheckoutModal()" id="checkoutBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-xl"></i> متابعة إتمام الطلب
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 hidden">
+        <div onclick="closeCheckoutModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        <div class="relative max-w-md w-full mx-auto my-12 bg-white rounded-2xl shadow-2xl overflow-hidden p-6 z-10 border border-amber-200">
+            <h3 class="text-xl font-black text-amber-900 mb-4 pb-2 border-b border-amber-100 flex items-center gap-2">
+                <i class="fas fa-clipboard-list text-amber-600"></i> بيانات الاستلام والتوصيل
+            </h3>
+            
+            <form id="orderForm" onsubmit="sendOrderToWhatsApp(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">الاسم بالكامل *</label>
+                    <input type="text" id="custName" required placeholder="أدخل اسمك الكريم" class="w-full px-3 py-2 border border-amber-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">رقم الهاتف والتواصل *</label>
+                    <input type="tel" id="custPhone" required placeholder="مثال: 01118877988" class="w-full px-3 py-2 border border-amber-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">عنوان التوصيل (المحافظة / المدينة / الشارع) *</label>
+                    <textarea id="custAddress" required rows="2" placeholder="اكتب العنوان بالتفصيل" class="w-full px-3 py-2 border border-amber-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">ملاحظات إضافية (اختياري)</label>
+                    <input type="text" id="custNotes" placeholder="أي ملاحظة بخصوص التوصيل أو وقت الاستلام" class="w-full px-3 py-2 border border-amber-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm">
+                </div>
+
+                <div class="pt-2 flex gap-3">
+                    <button type="button" onclick="closeCheckoutModal()" class="w-1/3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 rounded-xl text-sm">
+                        إلغاء
+                    </button>
+                    <button type="submit" class="w-2/3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-md text-sm flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> تأكيد وإرسال للواتس
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Quick Buttons -->
+    <div class="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
+        <a href="https://wa.me/201118877988" target="_blank" title="تواصل واتساب" class="w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-2xl transition hover:scale-110">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </a>
+        <a href="https://t.me/mohamedashraf2345" target="_blank" title="تواصل تليجرام" class="w-14 h-14 bg-sky-500 hover:bg-sky-600 text-white rounded-full flex items-center justify-center shadow-2xl transition hover:scale-110">
+            <i class="fab fa-telegram-plane text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        // Products Database
+        const products = [
+            // Honey Category
+            { id: 1, name: 'عسل برسيم (قطفة أولى)', category: 'honey', price: 200, unit: '1 كجم', desc: 'عسل طبيعي نقي 100% قطفة أولى فاخرة جداً.', icon: '🍯' },
+            { id: 2, name: 'عسل موالح', category: 'honey', price: 200, unit: '1 كجم', desc: 'غني بفيامين سي وطعم الموالح الطبيعي الجذاب.', icon: '🍊' },
+            { id: 3, name: 'عسل برسيم (قطفة ثانية)', category: 'honey', price: 150, unit: '1 كجم', desc: 'عسل برسيم طبيعي ومغذي بسعر مميز.', icon: '🍯' },
+            { id: 4, name: 'عسل حبة البركة', category: 'honey', price: 200, unit: '1 كجم', desc: 'فوائد حبة البركة مع نقاء العسل البلدي الطبيعي.', icon: '🌿' },
+            { id: 5, name: 'عسل بردقوش', category: 'honey', price: 200, unit: '1 كجم', desc: 'مفيد وصحي جداً للجهاز الهضمي والمناعة.', icon: '🌱' },
+
+            // Palestine Category
+            { id: 6, name: 'المختوم الفلسطيني (250 جرام)', category: 'palestine', price: 150, unit: '250 جم', desc: 'المختوم الفلسطيني الأصلي بوزن 250 جرام.', icon: '🇵🇸' },
+            { id: 7, name: 'المختوم الفلسطيني (300 جرام)', category: 'palestine', price: 200, unit: '300 جم', desc: 'المختوم الفلسطيني الأصلي بوزن 300 جرام.', icon: '🇵🇸' },
+            { id: 8, name: 'المختوم الفلسطيني (400 جرام)', category: 'palestine', price: 300, unit: '400 جم', desc: 'المختوم الفلسطيني الأصلي بوزن 400 جرام.', icon: '🇵🇸' },
+            { id: 9, name: 'المختوم الفلسطيني (600 جرام)', category: 'palestine', price: 400, unit: '600 جم', desc: 'المختوم الفلسطيني الأصلي بوزن 600 جرام.', icon: '🇵🇸' },
+            { id: 10, name: 'المختوم الفلسطيني (900 جرام)', category: 'palestine', price: 600, unit: '900 جم', desc: 'المختوم الفلسطيني الأصلي بوزن 900 جرام.', icon: '🇵🇸' },
+            { id: 11, name: 'المختوم الفلسطيني (1100 جرام)', category: 'palestine', price: 700, unit: '1.1 كجم', desc: 'المختوم الفلسطيني الأصلي عالي الجودة بوزن 1100 جرام.', icon: '🇵🇸' },
+
+            // Supplements & Mixes
+            { id: 12, name: 'برطمان مكسرات بالعسل', category: 'supplements', price: 90, unit: 'برطمان', desc: 'تشكيلة مكسرات محامصة طازجة مغمورة بالعسل الطبيعي.', icon: '🥜' },
+            { id: 13, name: 'غذاء ملكات النحل (7 جرام)', category: 'supplements', price: 50, unit: '7 جرام', desc: 'غذاء ملكات بيور طازج لزيادة الطاقة والنشاط.', icon: '👑' },
+            { id: 14, name: 'حبوب لقاح (50 جرام)', category: 'supplements', price: 60, unit: '50 جرام', desc: 'غنية بالبروتينات والفيتامينات الطبيعية.', icon: '🌼' },
+            { id: 15, name: 'جينسينج بيور (بالجرام)', category: 'supplements', price: 5, unit: 'لكل جرام', desc: 'جنسنج كوري فاخر لزيادة التركيز والنشاط.', icon: '⚡' },
+            { id: 16, name: 'بروبليس / عكبر (بالجرام)', category: 'supplements', price: 5, unit: 'لكل جرام', desc: 'المضاد الحيوي الطبيعي الأقوى من المنحل.', icon: '🛡️' },
+            { id: 17, name: 'طلع نخل بيور (بالجرام)', category: 'supplements', price: 2, unit: 'لكل جرام', desc: 'طلع نخل طبيعي ونقي 100%.', icon: '🌴' },
+            { id: 18, name: 'جنين قمح (1 كجم)', category: 'supplements', price: 600, unit: '1 كجم', desc: 'مفيد وصحي جداً للبدن وغني بالفيتامينات.', icon: '🌾' },
+
+            // Remedy Mixes (Special)
+            { id: 19, name: 'خلطة رفع المناعة الخاصة', category: 'remedy', price: 'عند الطلب', unit: 'خلطة مجربة', desc: 'تركيبة مجربة من العسل وغذاء الملكات وحبوب اللقاح.', icon: '🧪' },
+            { id: 20, name: 'خلطة زيادة الوزن والشهية', category: 'remedy', price: 'عند الطلب', unit: 'خلطة مجربة', desc: 'مكونات طبيعية لفتح الشهية وزيادة الوزن بشكل صحي.', icon: '💪' },
+            { id: 21, name: 'خلطة المتزوجين والنشاط', category: 'remedy', price: 'عند الطلب', unit: 'خلطة مجربة', desc: 'مزيج المكسرات والجنسنج والعكبر للنشاط والحيوية.', icon: '🔥' },
+            { id: 22, name: 'خلطة نمو وصحة الأطفال', category: 'remedy', price: 'عند الطلب', unit: 'خلطة مجربة', desc: 'خلطة آمنة ومغذية جداً لدعم صحة ونمو أطفالك.', icon: '👶' },
+
+            // Wholesale Offers
+            { id: 23, name: 'كرتونة عسل برسيم قطفة أولى (12 برطمان)', category: 'wholesale', price: 2000, oldPrice: 2400, unit: '12 برطمان', desc: 'عرض كرتونة الجملة - وفر 400 جنيه فوراً!', icon: '📦' },
+            { id: 24, name: 'كرتونة عسل برسيم قطفة ثانية (12 برطمان)', category: 'wholesale', price: 1000, oldPrice: 1500, unit: '12 برطمان', desc: 'عرض كرتونة الجملة - وفر 500 جنيه فوراً!', icon: '📦' },
+            { id: 25, name: 'كرتونة مكسرات بالعسل (12 برطمان)', category: 'wholesale', price: 1000, oldPrice: 1080, unit: '12 برطمان', desc: 'عرض الجملة لمكسرات العسل - 12 برطمان بسعر خصم خاص.', icon: '📦' }
+        ];
+
+        let cart = [];
+        let activeCategory = 'all';
+
+        // Render products
+        function renderProducts(items) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            if(items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-search-minus text-5xl text-amber-300 mb-3"></i>
+                        <p class="text-gray-600 font-bold">لم نجد أي منتجات تطابق بحثك حالياً.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-5 border border-amber-100 shadow-sm hover:shadow-xl transition flex flex-col justify-between group relative";
+                
+                let priceDisplay = '';
+                if(typeof product.price === 'number') {
+                    priceDisplay = `
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-xl font-black text-amber-900">${product.price} ج.م</span>
+                            ${product.oldPrice ? `<span class="text-xs text-gray-400 line-through">${product.oldPrice} ج.م</span>` : ''}
+                        </div>
+                    `;
+                } else {
+                    priceDisplay = `<span class="text-base font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-lg">${product.price}</span>`;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <div class="w-full h-36 bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-xl flex items-center justify-center text-6xl mb-4 group-hover:scale-105 transition-transform duration-300">
+                            ${product.icon}
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-md mb-2 inline-block">
+                            ${product.unit}
+                        </span>
+                        <h3 class="font-bold text-gray-900 text-lg mb-1">${product.name}</h3>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">${product.desc}</p>
+                    </div>
+
+                    <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                        ${priceDisplay}
+                        <button onclick="addToCart(${product.id})" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md active:scale-95 transition">
+                            <i class="fas fa-cart-plus"></i> إضافة
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter
+        function selectCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn bg-white hover:bg-amber-50 border border-amber-200 text-gray-700 font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition";
+            });
+            const activeBtn = document.getElementById(`cat-${cat}`);
+            if(activeBtn) {
+                activeBtn.className = "cat-btn bg-amber-600 text-white font-bold px-5 py-2.5 rounded-xl whitespace-nowrap text-sm transition shadow-sm";
+            }
+            filterProducts();
+        }
+
+        // Filter Products (Category + Search)
+        function filterProducts() {
+            const query = (document.getElementById('searchInput').value || document.getElementById('mobileSearchInput').value || '').trim().toLowerCase();
+            
+            let filtered = products;
+
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === activeCategory);
+            }
+
+            if (query !== '') {
+                filtered = filtered.filter(p => p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+            }
+
+            renderProducts(filtered);
+        }
+
+        function syncAndFilter(val) {
+            document.getElementById('searchInput').value = val;
+            filterProducts();
+        }
+
+        // Cart Actions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if(!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if(existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCartModal(true); // Open cart preview
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if(!item) return;
+
+            item.qty += delta;
+            if(item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalQty;
+
+            const container = document.getElementById('cartItemsContainer');
+            container.innerHTML = '';
+
+            let grandTotal = 0;
+
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-400">
+                        <i class="fas fa-shopping-basket text-6xl mb-3"></i>
+                        <p class="font-bold text-gray-600">السلة فارغة حالياً</p>
+                        <p class="text-xs mt-1">تصفح المنتجات وأضف ما يعجبك بسهولة</p>
+                    </div>
+                `;
+                document.getElementById('cartTotal').innerText = '0 ج.م';
+                document.getElementById('checkoutBtn').disabled = true;
+                document.getElementById('checkoutBtn').classList.add('opacity-50', 'cursor-not-allowed');
+                return;
+            }
+
+            document.getElementById('checkoutBtn').disabled = false;
+            document.getElementById('checkoutBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+
+            cart.forEach(item => {
+                const isNumericPrice = typeof item.price === 'number';
+                const itemTotal = isNumericPrice ? (item.price * item.qty) : 0;
+                if(isNumericPrice) grandTotal += itemTotal;
+
+                const div = document.createElement('div');
+                div.className = "py-3 flex items-center justify-between gap-3";
+                div.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">${item.icon}</span>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-900">${item.name}</h4>
+                            <p class="text-xs text-amber-800 font-semibold">
+                                ${isNumericPrice ? item.price + ' ج.م' : item.price}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center border border-amber-200 rounded-lg bg-amber-50">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 flex items-center justify-center font-bold text-amber-800 hover:bg-amber-200 rounded-r-lg">-</button>
+                            <span class="px-2 text-xs font-bold">${item.qty}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 flex items-center justify-center font-bold text-amber-800 hover:bg-amber-200 rounded-l-lg">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-sm px-1">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('cartTotal').innerText = grandTotal > 0 ? `${grandTotal} ج.م` : 'تحدد الخلطات عند التواصل';
+        }
+
+        // Toggle Modals
+        function toggleCartModal(forceOpen = false) {
+            const modal = document.getElementById('cartModal');
+            if(forceOpen) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.toggle('hidden');
+            }
+        }
+
+        function openCheckoutModal() {
+            if(cart.length === 0) return;
+            toggleCartModal(false);
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        // Send WhatsApp Message Order
+        function sendOrderToWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const notes = document.getElementById('custNotes').value.trim();
+
+            let grandTotal = 0;
+            let itemsSummary = '';
+
+            cart.forEach((item, index) => {
+                const isNumericPrice = typeof item.price === 'number';
+                if(isNumericPrice) grandTotal += (item.price * item.qty);
+
+                itemsSummary += `${index + 1}. *${item.name}*\n   الكمية: ${item.qty} | السعر: ${isNumericPrice ? (item.price * item.qty) + ' ج.م' : item.price}\n`;
+            });
+
+            let message = `*طلب جديد من متجر مناحل المحمدي 🍯✨*\n`;
+            message += `-----------------------------------\n`;
+            message += `👤 *اسم الزبون:* ${name}\n`;
+            message += `📞 *رقم التواصل:* ${phone}\n`;
+            message += `📍 *العنوان:* ${address}\n`;
+            if(notes) message += `📝 *ملاحظات:* ${notes}\n`;
+            message += `-----------------------------------\n`;
+            message += `🛒 *الطلبات:* \n${itemsSummary}`;
+            message += `-----------------------------------\n`;
+            message += `💰 *الإجمالي النهائي:* ${grandTotal > 0 ? grandTotal + ' ج.م' : 'يحدد بالاتفاق'}\n\n`;
+            message += `يرجى تأكيد الطلب والتوصيل 🙏`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/201118877988?text=${encodedMessage}`;
+
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+
+            // Reset Cart & Close Modal
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+        }
+
+        // Initialize on Load
+        window.onload = function() {
+            renderProducts(products);
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
+```
